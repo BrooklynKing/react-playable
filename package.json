@@ -1,6 +1,6 @@
 {
   "name": "react-playable",
-  "version": "2.1.0",
+  "version": "1.0.0",
   "description": "React wrapper for playable",
   "keywords": [
     "react",
@@ -14,7 +14,7 @@
     "player",
     "video"
   ],
-  "homepage": "https://wix.github.io/react-playable/",
+  "homepage": "https://BrooklynKing.github.io/react-playable/",
   "bugs": {
     "url": "https://github.com/wix/react-playable/issues",
     "email": "oleksiim@wix.com"
