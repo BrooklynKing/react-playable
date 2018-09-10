@@ -44,10 +44,5 @@
     "jsdoc-format": [true, "check-multiline-start"],
     "no-redundant-jsdoc": false,
     "no-shadowed-variable": true
-  },
-  "linterOptions": {
-    "exclude": [
-      "src/**/*.spec.ts"
-    ]
   }
 }

@@ -40,8 +40,8 @@
     "build": "haste-playable clean && haste-playable build && npm run bundle:react-playable",
     "test": "",
     "tslint": "ts-node node_modules/.bin/tslint -p . -c tslint.json",
-    "tslint:all": "npm run tslint -- '{src,scripts}/**/*.ts'",
-    "prettier:all": "prettier --write '{src,scripts,tslint-rules,dev-env}/**/*.{js,ts}'",
+    "tslint:all": "npm run tslint -- '{src,scripts}/**/*.{ts,tsx}'",
+    "prettier:all": "prettier --write '{src,scripts,tslint-rules,dev-env}/**/*.{ts,tsx}'",
     "csscomb:all": "csscomb src/.",
     "precommit": "lint-staged && npm run test"
   },
@@ -51,7 +51,7 @@
   },
   "dependencies": {
     "classnames": "^2.2.6",
-    "playable": "^2.0.0",
+    "playable": "^2.1.1",
     "tslib": "^1.9.3"
   },
   "devDependencies": {
@@ -69,6 +69,7 @@
     "jsdom-global": "^3.0.2",
     "lint-staged": "^7.2.2",
     "prettier": "^1.14.2",
+    "prop-types": "^15.6.2",
     "react": "^16.1.0",
     "react-dom": "^16.1.0",
     "tslint": "^5.11.0",
