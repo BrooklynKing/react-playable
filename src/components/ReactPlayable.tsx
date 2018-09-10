@@ -46,8 +46,8 @@ interface IExtendedComponent extends React.ComponentClass {
   dependencies?: string[];
 }
 
-export default class ReactPlayable extends React.Component<IProps, IState> {
-  static propTypes = {
+export default class ReactPlayable extends React.PureComponent<IProps, IState> {
+  static propTypes: React.ValidationMap<IProps> = {
     width: number, // Width of player
     height: number, // Height of player
     fillAllSpace: bool, // Alow player to fill all available space
@@ -56,8 +56,6 @@ export default class ReactPlayable extends React.Component<IProps, IState> {
 
     title: string,
     poster: string,
-
-    text: object, // Map with text for player
 
     modules: object,
     playbackAdapters: array,
