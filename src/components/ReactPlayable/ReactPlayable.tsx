@@ -12,7 +12,13 @@ import {
   shape,
 } from 'prop-types';
 
-import { create, registerModule, registerPlaybackAdapter } from 'playable';
+import {
+  create,
+  registerModule,
+  registerPlaybackAdapter,
+  IPlayer,
+  MediaSource,
+} from 'playable';
 
 import styles from './styles.scss';
 
@@ -33,7 +39,7 @@ interface IProps {
   height?: number;
   fillAllSpace?: boolean;
 
-  src?: any;
+  src?: MediaSource;
 
   title?: string;
   poster?: string;
@@ -82,7 +88,7 @@ export default class ReactPlayable extends React.PureComponent<IProps, IState> {
     onInit: func,
   };
 
-  private _player: any;
+  private _player: IPlayer;
   private _$wrapper: HTMLElement;
 
   constructor(props: IProps) {
@@ -165,11 +171,11 @@ export default class ReactPlayable extends React.PureComponent<IProps, IState> {
     }
 
     if (title !== prevProps.title) {
-      this._player.setTitle(src);
+      this._player.setTitle(title);
     }
 
     if (poster !== prevProps.poster) {
-      this._player.setPoster(src);
+      this._player.setPoster(poster);
     }
   }
 
@@ -211,6 +217,7 @@ export default class ReactPlayable extends React.PureComponent<IProps, IState> {
       if (constructor.dependencies) {
         const modules = constructor.dependencies.reduce(
           (resolvedModules: any, moduleName: string) => {
+            //@ts-ignore
             resolvedModules[moduleName] = this._player._scope.resolve(
               moduleName,
             );
@@ -229,6 +236,7 @@ export default class ReactPlayable extends React.PureComponent<IProps, IState> {
   renderChildren() {
     return ReactDOM.createPortal(
       this.getExtendedChildren(),
+      //@ts-ignore
       this._player._defaultModules.rootContainer.getElement(),
     );
   }
