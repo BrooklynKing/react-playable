@@ -9,16 +9,26 @@ import {
   func,
   oneOfType,
   object,
+  shape,
 } from 'prop-types';
 
-import {
-  create,
-  registerModule,
-  registerPlaybackAdapter,
-  //@ts-ignore
-} from 'playable/dist/src/index';
+import { create, registerModule, registerPlaybackAdapter } from 'playable';
+
+import styles from './styles.scss';
 
 interface IProps {
+  config?: {
+    modules?: any;
+    playbackAdapters?: any[];
+
+    hideMainUI?: boolean;
+    hideOverlay?: boolean;
+    disableControlWithKeyboard?: boolean;
+    disableControlWithClickOnPlayer?: boolean;
+    disableFullScreen?: boolean;
+    nativeBrowserControls?: boolean;
+  };
+
   width?: number;
   height?: number;
   fillAllSpace?: boolean;
@@ -28,8 +38,7 @@ interface IProps {
   title?: string;
   poster?: string;
 
-  modules?: any;
-  playbackAdapters?: any[];
+  texts?: any;
 
   onInit?: (player: any) => {};
 }
@@ -57,8 +66,18 @@ export default class ReactPlayable extends React.PureComponent<IProps, IState> {
     title: string,
     poster: string,
 
-    modules: object,
-    playbackAdapters: array,
+    texts: object,
+
+    config: shape({
+      modules: object,
+      playbackAdapters: array,
+      hideMainUI: bool,
+      hideOverlay: bool,
+      disableControlWithKeyboard: bool,
+      disableControlWithClickOnPlayer: bool,
+      disableFullScreen: bool,
+      nativeBrowserControls: bool,
+    }),
 
     onInit: func,
   };
@@ -76,16 +95,25 @@ export default class ReactPlayable extends React.PureComponent<IProps, IState> {
 
   componentDidMount() {
     const {
-      modules,
-      playbackAdapters,
-
       width,
       height,
-      fillAllSpace,
+      fillAllSpace = false,
+
       src,
       title,
       poster,
 
+      texts,
+      config: {
+        modules = {},
+        playbackAdapters = [],
+        disableControlWithClickOnPlayer = false,
+        disableControlWithKeyboard = false,
+        disableFullScreen = false,
+        nativeBrowserControls = false,
+        hideMainUI = false,
+        hideOverlay = false,
+      } = {},
       onInit,
     } = this.props;
 
@@ -99,6 +127,13 @@ export default class ReactPlayable extends React.PureComponent<IProps, IState> {
       src,
       title,
       poster,
+      disableControlWithClickOnPlayer,
+      disableControlWithKeyboard,
+      disableFullScreen,
+      texts,
+      nativeBrowserControls,
+      hideMainUI,
+      hideOverlay,
     });
 
     this._player.attachToElement(this._$wrapper);
@@ -199,14 +234,13 @@ export default class ReactPlayable extends React.PureComponent<IProps, IState> {
   }
 
   render() {
-    const styles = this.props.fillAllSpace
-      ? { width: '100%', height: '100%' }
-      : {};
+    const wrapperClassName = this.props.fillAllSpace ? styles.fillAllSpace : '';
 
     return (
       <section
         data-hook="react-playable"
         ref={this.setWrapperRef}
+        className={wrapperClassName}
         style={styles}
       >
         {this.state.isMounted ? this.renderChildren() : null}

@@ -3,7 +3,7 @@ import { UI_EVENTS } from 'playable/dist/src/index';
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import ReactPlayable from './components/ReactPlayable.tsx';
+import ReactPlayable from './components/ReactPlayable/ReactPlayable.tsx';
 
 function Child() {
   return (
