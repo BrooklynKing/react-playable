@@ -16,12 +16,12 @@
   ],
   "homepage": "https://BrooklynKing.github.io/react-playable/",
   "bugs": {
-    "url": "https://github.com/wix/react-playable/issues",
+    "url": "https://github.com/BrooklynKing/react-playable/issues",
     "email": "oleksiim@wix.com"
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:wix/playable.git"
+    "url": "git@github.com:BrooklynKing/react-playable.git"
   },
   "license": "MIT",
   "author": {
