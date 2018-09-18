@@ -1,5 +1,5 @@
 //@ts-ignore
-import { UI_EVENTS } from 'playable/dist/src/index';
+import { UI_EVENTS } from 'playable';
 import React from 'react';
 import ReactDOM from 'react-dom';
 
