@@ -20,7 +20,7 @@ import {
   MediaSource,
 } from 'playable';
 
-interface IProps {
+export interface ReactPlayableProps {
   config?: {
     modules?: any;
     playbackAdapters?: any[];
@@ -59,8 +59,11 @@ interface IExtendedComponent extends React.ComponentClass {
   dependencies?: string[];
 }
 
-export default class ReactPlayable extends React.PureComponent<IProps, IState> {
-  static propTypes: React.ValidationMap<IProps> = {
+export class ReactPlayable extends React.PureComponent<
+  ReactPlayableProps,
+  IState
+> {
+  static propTypes: React.ValidationMap<ReactPlayableProps> = {
     width: number, // Width of player
     height: number, // Height of player
     fillAllSpace: bool, // Alow player to fill all available space
@@ -89,7 +92,7 @@ export default class ReactPlayable extends React.PureComponent<IProps, IState> {
   private _player: IPlayer;
   private _$wrapper: HTMLElement;
 
-  constructor(props: IProps) {
+  constructor(props: ReactPlayableProps) {
     super(props);
 
     this.state = {
@@ -149,7 +152,7 @@ export default class ReactPlayable extends React.PureComponent<IProps, IState> {
     });
   }
 
-  componentDidUpdate(prevProps: IProps) {
+  componentDidUpdate(prevProps: ReactPlayableProps) {
     const { width, height, fillAllSpace, src, title, poster } = this.props;
 
     if (width !== prevProps.width) {

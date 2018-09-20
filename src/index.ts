@@ -1,3 +1,1 @@
-import ReactPlayable from './components/ReactPlayable/ReactPlayable.tsx';
-
-export { ReactPlayable };
+export { ReactPlayable, ReactPlayableProps } from './components/ReactPlayable';
