@@ -20,8 +20,6 @@ import {
   MediaSource,
 } from 'playable';
 
-import styles from './styles.scss';
-
 interface IProps {
   config?: {
     modules?: any;
@@ -242,13 +240,14 @@ export default class ReactPlayable extends React.PureComponent<IProps, IState> {
   }
 
   render() {
-    const wrapperClassName = this.props.fillAllSpace ? styles.fillAllSpace : '';
+    const styles = this.props.fillAllSpace
+      ? { width: '100%', height: '100%' }
+      : {};
 
     return (
       <section
         data-hook="react-playable"
         ref={this.setWrapperRef}
-        className={wrapperClassName}
         style={styles}
       >
         {this.state.isMounted ? this.renderChildren() : null}

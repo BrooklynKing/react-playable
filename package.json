@@ -32,7 +32,7 @@
     "dist",
     "src"
   ],
-  "main": "dist/statics/react-playable.bundle.js",
+  "main": "dist/src/index.js",
   "scripts": {
     "start": "haste-playable start",
     "lint": "npm run tslint:all",
@@ -46,14 +46,14 @@
     "precommit": "lint-staged && npm run test"
   },
   "peerDependencies": {
+    "playable": ">=2.0.0",
     "react": ">=16.1.0",
     "react-dom": ">=16.1.0"
   },
   "dependencies": {
     "classnames": "^2.2.6",
     "playable": "^2.1.1",
-    "tslib": "^1.9.3",
-    "yoshi": "^3.11.0"
+    "tslib": "^1.9.3"
   },
   "devDependencies": {
     "@babel/types": "7.0.0-beta.46",
@@ -85,6 +85,10 @@
     "preset": "playable",
     "presetConfig": {
       "exports": "ReactPlayable",
+      "externals": {
+        "react": "React",
+        "react-dom": "ReactDOM"
+      },
       "devServer": {
         "entry": "./develop.tsx",
         "port": 5000

@@ -6,7 +6,6 @@
     "noImplicitAny": true,
     "noUnusedParameters": true,
     "noUnusedLocals": true,
-    "esModuleInterop": true,
     "importHelpers": true,
     "target": "es5",
     "jsx": "react",
